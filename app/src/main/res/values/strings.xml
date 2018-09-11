@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">KotlinSegmentPushApp</string>
+    <string-array name="list">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+</resources>
