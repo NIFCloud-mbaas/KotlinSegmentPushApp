@@ -17,7 +17,7 @@
 
 ## 動作環境
 
-* Android Studio ver. 2.1.2
+* Android Studio ver. 3.1
 * Android 6.0
  * このサンプルアプリは、プッシュ通知を受信する必要があるため実機ビルドが必要です
 
@@ -174,7 +174,7 @@ __[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/d
 
 ```java
 //**************** APIキーの設定とSDKの初期化 **********************
-NCMB.initialize(applicationContext, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
+NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 
 ```
 
