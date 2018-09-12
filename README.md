@@ -172,7 +172,7 @@ __[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/d
  * installationクラス(端末情報)が保存される処理は以下のように記述されます
  * アプリを再インストールした時に、端末のデバイストークンが重複した場合の処理を考慮した実装となっています。
 
-```java
+```kotlin
 //**************** APIキーの設定とSDKの初期化 **********************
 NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 
@@ -181,7 +181,7 @@ NCMB.initialize(this, "YOUR_APPLICATION_KEY", "YOUR_CLIENT_KEY");
 * 端末情報を登録するための実装は以下となっています。
 * 現端末の`installation`をsaveInBackgroundメソッドを利用して、データ保存を行います。
 
-```java
+```kotlin
 _channels = findViewById<View>(R.id.spinChannel) as Spinner
 _txtPrefectures = findViewById<View>(R.id.txtPrefecture) as EditText
 val prefectures = _txtPrefectures.text.toString()
