@@ -38,7 +38,7 @@
 ## 手順
 ### 0.プッシュ通知機能を使うための準備
 
-ニフティクラウド mobile backendと連携させるためのAPIキーを取得する必要があります。 以下のドキュメントを参考に、FCMプロジェクトの作成とAPIキーの取得を行ってください。
+ニフクラ mobile backendと連携させるためのAPIキーを取得する必要があります。 以下のドキュメントを参考に、FCMプロジェクトの作成とAPIキーの取得を行ってください。
 
 __[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/doc/current/tutorial/push_setup_android.html)__
 
