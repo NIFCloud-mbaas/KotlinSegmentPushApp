@@ -38,9 +38,10 @@
 ## 手順
 ### 0.プッシュ通知機能を使うための準備
 
-ニフクラ mobile backendと連携させるためのAPIキーを取得する必要があります。 以下のドキュメントを参考に、FCMプロジェクトの作成とAPIキーの取得を行ってください。
+FCM対応したプッシュ通知を送信する場合、google-service.jsonをアプリに配置してただくのと、Firebaseの秘密鍵をmobile backendにアップロードしていただく必要があります。
+以下のドキュメントを参考に、google-service.jsonとFirebase秘密鍵の設定を行ってください。
 
-__[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/doc/current/tutorial/push_setup_android.html)__
+__[google-service.jsonとFirebase秘密鍵の設定方法について](https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html)__
 
 ### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の準備
 
@@ -57,7 +58,7 @@ __[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/d
 
 * アプリ設定開いてプッシュ通知の設定をします
    * 「プッシュ通知の許可」で「許可する」選択、「保存する」をクリックします
-   * 「Androidプッシュ通知」の「APIキー」には、FCMでプロジェクト作成時に発行された「サーバーキー」を記入し、「保存する」をクリックします
+   * 「FCMプッシュ通知」の「FCMプッシュ通知設定ファイルの選択」というボタンをクリックして、 FirebaseからダウンロードしたFirebaseの秘密鍵jsonファイルをアップロードします
 
 ![画像6](/readme-img/mBassPushEnv.png)
 
@@ -86,14 +87,11 @@ __[mobile backendとFCMの連携に必要な設定](https://mbaas.nifcloud.com/d
 * それぞれ`YOUR_APPLICATION_KEY`と`YOUR_CLIENT_KEY`の部分を書き換えます
  * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
 
-### 5. AndroidのSender IDキーの設定
+### 5. google-service.jsonの配置
 
-* `MainActivity.kt`を編集します
+* Firebaseから発行したgoogle-service.jsonをアプリに配置します
 
-![画像10](/readme-img/FCMAPIkey.png)
-
-* `ANDROID_SENDER_ID`の部分を、FCMでプロジェクト作成時に発行された「Sender ID」に書き換えます
- * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
+![画像10](/readme-img/PlaceGoogleServiceFile.png)
 
 ### 6. 動作確認
 
