@@ -89,7 +89,7 @@ https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html<br>
 * プロジェクトを開きます。`MainActivity.kt`ファイルを開きます。
     * ディレクトリはデフォルトで「Android」が選択されていますので、「Project」に切り替えてから探してください
     
-![画像16](/read-img/project.png)
+   <center><img src="readme-img/project.png" alt="画像17" width="300px"></center>
 
 
 ![画像8](/readme-img/ProjectDesign.png)
