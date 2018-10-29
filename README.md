@@ -91,6 +91,7 @@ https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html<br>
     
 ![画像16](/read-img/project.png)
 
+
 ![画像8](/readme-img/ProjectDesign.png)
 
 ### 4. APIキーの設定
@@ -108,7 +109,7 @@ https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html<br>
 * Firebaseから発行したgoogle-services.jsonをアプリに配置します
    * なお、発行時にAndroidパッケージ名は"mbaas.com.nifcloud.kotlinsegmentpushapp"としてください
 
-   ![画像17](/read-img/package.png)
+   <center><img src="readme-img/package.png" alt="画像17" width="600px"></center>
 
    * パッケージ名を別名にした場合はアプリ配置後、google-services.jsonファイル内の"package_name"を"mbaas.com.nifcloud.kotlinsegmentpushapp"としてください
 
