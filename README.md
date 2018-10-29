@@ -20,7 +20,7 @@
 * Android Studio ver. 3.1
 * Android 6.0
 * Android SDK v3
- * SDK v2系だと動作しないので注意
+    * SDK v2系だと動作しないので注意
 
 ※このサンプルアプリは、プッシュ通知を受信する必要があるため実機ビルドが必要です<br>
 ※上記内容で動作確認をしています
@@ -41,18 +41,18 @@
 
 ニフクラmobile backendとFCMを連携させる場合、Firebaseプロジェクトを作成していただいたあと、下記設定を行なっていただく必要があります。
 
-* APIキーの取得
-* google-service.jsonの取得
+* APIキーの取得 ※2019年3月以降廃止
+* google-services.jsonの取得
 * Firebaseプロジェクトの秘密鍵をmobile backendにアップロード
 
 以下のドキュメントを参考に、設定を行ってください。
 
-▼Firebaseプロジェクトの作成とAPIキーの取得▼
-https://mbaas.nifcloud.com/doc/current/tutorial/push_setup_android.html
+▼Firebaseプロジェクトの作成とAPIキーの取得▼<br>
+https://mbaas.nifcloud.com/doc/current/tutorial/push_setup_android.html<br>
 ※2019年3月までの間は、Firebaseプロジェクトのサーバーキーもmobile backendにて設定していただく必要があります。
 
-▼google-services.jsonとFirebase秘密鍵の設定方法について▼
-https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html
+▼google-services.jsonとFirebase秘密鍵の設定方法について▼<br>
+https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html<br>
 ※[手順5.google-services.jsonの配置](https://github.com/NIFCloud-mbaas/KotlinSegmentPushApp#5-google-servicesjsonの配置)もご参考ください。
 
 ### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/signup.htm)の準備
@@ -89,7 +89,7 @@ https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html
 * プロジェクトを開きます。`MainActivity.kt`ファイルを開きます。
     * ディレクトリはデフォルトで「Android」が選択されていますので、「Project」に切り替えてから探してください
     
-    ![画像16](/read-img/project.png)
+![画像16](/read-img/project.png)
 
 ![画像8](/readme-img/ProjectDesign.png)
 
@@ -105,9 +105,11 @@ https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html
 
 ### 5. google-services.jsonの配置
 
-* Firebaseから発行したgoogle-service.jsonをアプリに配置します
+* Firebaseから発行したgoogle-services.jsonをアプリに配置します
    * なお、発行時にAndroidパッケージ名は"mbaas.com.nifcloud.kotlinsegmentpushapp"としてください
+
    ![画像17](/read-img/package.png)
+
    * パッケージ名を別名にした場合はアプリ配置後、google-services.jsonファイル内の"package_name"を"mbaas.com.nifcloud.kotlinsegmentpushapp"としてください
 
 ![画像10](/readme-img/PlaceGoogleServiceFile.png)
