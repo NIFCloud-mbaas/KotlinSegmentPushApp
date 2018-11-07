@@ -1,5 +1,5 @@
-# 【Android】端末を絞り込んでプッシュ通知を使ってみましょう！（セグメント配信）
-*2016/10/19作成*
+# 【Android】端末を絞り込んでプッシュ通知を使ってみましょう！（セグメント配信）for Kotlin
+*2016/10/19作成 (2018/10/29更新)*
 
 ![画像1](/readme-img/001.png)
 
@@ -19,8 +19,10 @@
 
 * Android Studio ver. 3.1
 * Android 6.0
- * このサンプルアプリは、プッシュ通知を受信する必要があるため実機ビルドが必要です
+* Android SDK v3
+    * SDK v2系だと動作しないので注意
 
+※このサンプルアプリは、プッシュ通知を受信する必要があるため実機ビルドが必要です<br>
 ※上記内容で動作確認をしています
 
 ## プッシュ通知の仕組み
@@ -30,20 +32,30 @@
 
  ![画像a1](/readme-img/a001.png)
 
- ※ FCMはGCM(Google Cloud Messaging)の新バージョンです。既にGCMにてプロジェクトの作成・GCMの有効化設定を終えている場合は、継続してご利用いただくことが可能です。新規でGCMをご利用いただくことはできませんので、あらかじめご了承ください。
 
-* 上図のように、アプリ（Android Studio）・サーバー（ニフクラ mobile backend）・通知サービス（FCM/GCM）の間でやり取りを行うため、認証が必要になります
- * 認証に必要なプッシュ通知のAPIキーおよびSenderIDは手順にて説明します。
+* 上図のように、アプリ（Android Studio）・サーバー（ニフクラ mobile backend）・通知サービス（FCM）の間でやり取りを行うため、認証が必要になります
+ * 認証に必要なプッシュ通知設定ファイルについては、手順にて説明します。
 
 ## 手順
 ### 0.プッシュ通知機能を使うための準備
 
-FCM対応したプッシュ通知を送信する場合、google-service.jsonをアプリに配置してただくのと、Firebaseの秘密鍵をmobile backendにアップロードしていただく必要があります。
-以下のドキュメントを参考に、google-service.jsonとFirebase秘密鍵の設定を行ってください。
+ニフクラmobile backendとFCMを連携させる場合、Firebaseプロジェクトを作成していただいたあと、下記設定を行なっていただく必要があります。
 
-__[google-service.jsonとFirebase秘密鍵の設定方法について](https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html)__
+* APIキーの取得 ※2019年3月以降廃止
+* google-services.jsonの取得
+* Firebaseプロジェクトの秘密鍵をmobile backendにアップロード
 
-### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/)の準備
+以下のドキュメントを参考に、設定を行ってください。
+
+▼Firebaseプロジェクトの作成とAPIキーの取得▼<br>
+https://mbaas.nifcloud.com/doc/current/tutorial/push_setup_android.html<br>
+※2019年3月までの間は、Firebaseプロジェクトのサーバーキーもmobile backendにて設定していただく必要があります。
+
+▼google-services.jsonとFirebase秘密鍵の設定方法について▼<br>
+https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html<br>
+※[手順5.google-services.jsonの配置](https://github.com/NIFCloud-mbaas/KotlinSegmentPushApp#5-google-servicesjsonの配置)もご参考ください。
+
+### 1. [ニフクラ mobile backend](https://mbaas.nifcloud.com/signup.htm)の準備
 
 * 上記リンクから会員登録（無料）をします
 * 登録後、ログインをすると下図のように「アプリの新規作成」画面が出ますので、アプリを作成します
@@ -58,6 +70,7 @@ __[google-service.jsonとFirebase秘密鍵の設定方法について](https://m
 
 * アプリ設定開いてプッシュ通知の設定をします
    * 「プッシュ通知の許可」で「許可する」選択、「保存する」をクリックします
+   * 「Androidプッシュ通知」の「APIキー」には、Firebaseでプロジェクト作成時に発行された「サーバーキー」を記入し、「保存する」をクリックします ※こちらの手順は2019年3月以降廃止予定です
    * 「FCMプッシュ通知」の「FCMプッシュ通知設定ファイルの選択」というボタンをクリックして、 FirebaseからダウンロードしたFirebaseの秘密鍵jsonファイルをアップロードします
 
 ![画像6](/readme-img/mBassPushEnv.png)
@@ -74,6 +87,10 @@ __[google-service.jsonとFirebase秘密鍵の設定方法について](https://m
 ![画像7](/readme-img/SelectProject.png)
 
 * プロジェクトを開きます。`MainActivity.kt`ファイルを開きます。
+    * ディレクトリはデフォルトで「Android」が選択されていますので、「Project」に切り替えてから探してください
+    
+   <center><img src="readme-img/project.png" alt="画像17" width="300px"></center>
+
 
 ![画像8](/readme-img/ProjectDesign.png)
 
@@ -87,9 +104,14 @@ __[google-service.jsonとFirebase秘密鍵の設定方法について](https://m
 * それぞれ`YOUR_APPLICATION_KEY`と`YOUR_CLIENT_KEY`の部分を書き換えます
  * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
 
-### 5. google-service.jsonの配置
+### 5. google-services.jsonの配置
 
-* Firebaseから発行したgoogle-service.jsonをアプリに配置します
+* Firebaseから発行したgoogle-services.jsonをアプリに配置します
+   * なお、発行時にAndroidパッケージ名は"mbaas.com.nifcloud.kotlinsegmentpushapp"としてください
+
+   <center><img src="readme-img/package.png" alt="画像17" width="600px"></center>
+
+   * パッケージ名を別名にした場合はアプリ配置後、google-services.jsonファイル内の"package_name"を"mbaas.com.nifcloud.kotlinsegmentpushapp"としてください
 
 ![画像10](/readme-img/PlaceGoogleServiceFile.png)
 
