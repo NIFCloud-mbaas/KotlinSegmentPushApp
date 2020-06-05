@@ -84,7 +84,7 @@ https://mbaas.nifcloud.com/doc/current/common/push_setup_fcm_json.html<br>
 
 * AndroidStudioを開き、解凍したプロジェクトを選択します
 
-![画像7](/readme-img/SelectProject.png)
+![画像7](/readme-img/android_studio.png)
 
 * プロジェクトを開きます。`MainActivity.kt`ファイルを開きます。
     * ディレクトリはデフォルトで「Android」が選択されていますので、「Project」に切り替えてから探してください
