@@ -1,9 +1,9 @@
 package mbaas.com.nifcloud.kotlinsegmentpushapp;
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.nifcloud.mbaas.core.NCMB
 import com.nifcloud.mbaas.core.NCMBInstallation
 import org.json.JSONArray
