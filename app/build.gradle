@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "mbaas.com.nifcloud.kotlinsegmentpushapp"
-        minSdkVersion 15
-        targetSdkVersion 30
+        minSdkVersion 18
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -30,6 +30,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-base:15.0.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation files('libs/NCMB.jar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
